@@ -145,7 +145,7 @@ int main(int argc, char** argv)
     // Create an output object, if output specified then setup the pipeline unless output is set to 'window'
     VideoWriter writer;
     if (output != "window" && output != "still") {
-        writer.open(output, cv::VideoWriter::fourcc('F', 'M', 'P', '4'), fps, Size(outframe.cols, outframe.rows));
+        writer.open(output, CV_FOURCC('F', 'M', 'P', '4'), fps, Size(outframe.cols, outframe.rows));
         if (!writer.isOpened()) {
             std::cerr << "Error can't create video writer" << std::endl;
             return 1;
@@ -170,7 +170,7 @@ int main(int argc, char** argv)
             // cv::cvtColor(outframe, image, cv::COLOR_BGR2YCrCb); // Define mat image outside the while loop
             imwrite("/tmp/img.jpg", outframe);
         }
-        
+
         if (output == "window") {
             imshow("SeekThermal", outframe);
             char c = waitKey(10);
